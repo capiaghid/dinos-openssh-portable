@@ -28,7 +28,6 @@
 * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-// ReSharper disable CppClangTidyClangDiagnosticInvalidUtf8
 #include <Windows.h>
 #include <Sddl.h>
 #include <Aclapi.h>
@@ -69,16 +68,8 @@ void show_no_chk_perm_warning(void)
 
 Dino Capiaghi: 28.08.2028
 =========================
-Sorry but those rules are complete nonsense. Consequently, administrators and users are forced to do far more bad things to make key-files available
-in most users' work environment than adding a second group for example!
-
-But eve this was not enough! ...., as a final severe hit to every expert's common sense;
-if not an crime against the ideal of the thinking human being at all:
-       This behavior is not configurable by any option!
-
-So, to prevent the worst from happening (file on USB stick, on local drive and so on)
-I have no other choice as to disable this function in source until we have a
-more relaxed a usefully version on hand to replace it.
+Is adding that much security that I have to disable the functions in source 
+to keep OpenSSH working in a decentralized Windows working environment
 */
 int
 check_secure_file_permission(const char *input_path, struct passwd * pw, int read_ok)
@@ -93,6 +84,11 @@ check_secure_file_permission(const char *input_path, struct passwd * pw, int rea
 * Check the users have access permission to the file don't violate the following rules:
   1. no user other than local administrators group and system account have write permission on the folder
 * Returns 0 on success and -1 on failure
+
+Dino Capiaghi: 28.08.2028
+=========================
+Is adding that much security that I have to disable the functions in source 
+to keep OpenSSH working in a decentralized Windows working environment
 */
 int
 check_secure_folder_permission(const wchar_t* path_utf16, int read_ok)
